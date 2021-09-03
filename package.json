@@ -1,0 +1,24 @@
+{
+  "name": "xoom_videochat_project",
+  "version": "1.0.0",
+  "description": "Xoom is inspired by the video chat network Zoom",
+  "main": "index.js",
+  "scripts": {
+    "test": "testxoom"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jeremiah1582/Xoom-.git"
+  },
+  "keywords": [
+    "video",
+    "chat",
+    "zoom"
+  ],
+  "author": "Jeremiah Brown",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jeremiah1582/Xoom-/issues"
+  },
+  "homepage": "https://github.com/Jeremiah1582/Xoom-#readme"
+}
