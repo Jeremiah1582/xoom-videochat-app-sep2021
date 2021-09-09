@@ -22,9 +22,7 @@ const useStyles = makeStyles((theme) => ({ //note: when the arrow function has a
       width: "90%",
     },
   },
-  image: {
-    marginLeft: "15px",
-  },
+  
   wrapper: {
     display: "flex",
     flexDirection: "column",
@@ -34,9 +32,10 @@ const useStyles = makeStyles((theme) => ({ //note: when the arrow function has a
 }));
 
 function App() {
+    const classes = useStyles();
   return (
-    <div>
-      <AppBar className='' position="static" color="inherit">
+    <div className={classes.wrapper}>
+      <AppBar className={classes.appBar} position="static" color="inherit">
         <Typography variant="h2" align="center">
           {" "}
           Video Chat{" "}
