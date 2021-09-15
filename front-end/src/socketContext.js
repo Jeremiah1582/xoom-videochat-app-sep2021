@@ -2,14 +2,15 @@ import React, {createContext, useState, useRef, useEffect} from 'react';
 import {io} from "socket.io-client";
 import Peer from "simple-peer";
 
-const socketContext = createContext();
+export const SocketContext = createContext();
 const socket = io('http://localhost:5000')
 
-const ContextProvider = ({children})=> { 
+export const ContextProvider = ({children})=> { 
 
 const [stream, setStream] = useState(null)
 const [me, setMe]=useState()
 const [call, setCall]= useState({})
+const [name, setName]= useState('')
 
 const[callAccepted, setCallAccepted]=useState(true)
 const[callEnded, setCallEnded]=useState(false)
@@ -49,7 +50,7 @@ useEffect(() => {
        connectionRef.current =peer
    }
 
-   const callUser =()=>{
+   const callUser =(id)=>{
     const peer = new Peer({initiator: true, trickle: false, stream })
 
        peer.on('signal', (data)=>{
@@ -59,10 +60,27 @@ useEffect(() => {
        peer.on('stream', (currentStream)=>{ // here we are setting the other users video as a receiver 
        userVideo.current.srcObject = currentStream
        })
+
+       socket.on('callaccepted', (signal)=>{
+           setCallAccepted(true);
+
+           peer.signal(signal)
+       })
+
+       connectionRef.current =peer
    }
    const leaveCall =()=>{
+       setCallEnded(true);
+       connectionRef.current.destroy()
+       window.location.reload() //this will reload the page and provide a new id 
 
    }
+
+   return (
+       <SocketContext.Provider value={{ call, callAccepted, myVideo, userVideo, stream, name, setName, callEnded, me, callUser, leaveCall, answerCall}}>
+       {children}
+       </SocketContext.Provider>
+   )
 
 }
 
