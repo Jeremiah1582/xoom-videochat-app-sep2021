@@ -63,7 +63,8 @@ const Options=({children})=>{
     answerCall,
   } = useContext(SocketContext);
   const [idToCall, setIdToCall] = useState("");
-
+  const [isIdReceived, setIsIdReceived] = useState(false);
+ console.log(me)
   return (
     <Container className={classes.container}>
       <Paper elevation={10} className={classes.paper}>
@@ -72,18 +73,21 @@ const Options=({children})=>{
             <Grid item xs={12} md={6} className={classes.padding}>
               <Typography gutterBottom variant='h6'> Account info </Typography>
                 <TextField label="name" value={name} onChange={(e)=>{setName(e.target.value)}} fullWidth/> 
-                <CopyToClipboard text={me} className={classes.margin}> 
-                <Button variant='contained' color='primary' fullWidth startIcon={<Assignment fontSize='large'/>}> copy your id
+               
+                <CopyToClipboard text={me} className={classes.margin} > 
+                <Button variant='contained' color='primary' fullWidth startIcon={<Assignment fontSize='large'
+                 />}> copy your id
                 </Button>
                 </CopyToClipboard> 
                
             </Grid>
             <Grid item xs={12} md={6} className={classes.padding}>
               <Typography gutterBottom variant='h6'> Make a call  </Typography>
-                <TextField label="id to call" value={idToCall} onChange={(e)=>{setIdToCall(callAccepted && !callEnded ? (
+                <TextField label="ID to call" value={idToCall} onChange={(e)=>setIdToCall(e.target.value)} /> 
+                {callAccepted && !callEnded ? (
                     <Button 
                     variant='contained' 
-                    color='primary' 
+                    color='secondary' 
                     fullWidth 
                     startIcon={<PhoneDisabled fontSize='large'/>}
                     onClick={leaveCall}
@@ -93,7 +97,7 @@ const Options=({children})=>{
                 ):(  
                 <Button 
                     variant='primary' 
-                    color='success' 
+                    color='primary' 
                     fullWidth 
                     startIcon={<Phone fontSize='large'/>}
                     onClick={()=>callUser(idToCall)}
@@ -102,8 +106,8 @@ const Options=({children})=>{
                 
                 </Button>
                     
-                ))}} 
-                fullWidth/> 
+                )}
+               
                
             </Grid>
           </Grid>

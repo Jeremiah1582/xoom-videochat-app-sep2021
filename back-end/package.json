@@ -8,6 +8,7 @@
     "start": "node server.js"
   },
   "author": "",
+  "proxy": "http://localhost:5000",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",

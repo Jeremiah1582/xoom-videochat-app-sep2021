@@ -2,12 +2,15 @@ const express = require("express");
 const app = express(); //alternatively. const app= require(express)();
 const server = require("http").createServer(app);
 const cors = require("cors");
-const PORT = 5000 || process.env.PORT;
-const io = require("socket.io")(server, {
+// const socket = require("socket.io-client")("http://localhost:5000", {rejectUnauthorized:false}) 
+// testing the connection with this line of code because i cant connect to the back end 
+const PORT =  process.env.PORT || 5000 ;
+
+const io = require("socket.io")(server,{rejectUnauthorized:false}, {
   cors: {
     origin: "*",
-    methods: ["GET", "POST"],
-  },
+    methods: [ "GET", "POST"]
+  }
 }); //Socket.IO enables real-time bidirectional event-based communication
 // server side instance
 app.use(cors()); //
@@ -21,17 +24,19 @@ io.on("connection", (socket) => { //0)what to do when connection is established
   socket.emit("me", socket.id);
 
   socket.on("disconnect", () => { //1) WTD when connection is established then diconnected
-    socket.broadcast.emit("callended");
+    socket.broadcast.emit("callEnded");
   });
 
-  socket.on("calluser", ({ userToCall, signalData, from, name }) => { //2) WTD when connected and calling other user
-    io.to(userToCall).emit("username", { signal: signalData, from, name });
+  socket.on("callUser", ({ userToCall, signalData, from, name }) => { //2) WTD when connected and calling other user
+    io.to(userToCall).emit("userName", { signal: signalData, from, name });
   });
-  socket.on("answercall", (data) => { //3) WTD connected and call is answered
-    io.to(data.to).emit("callAnswered", data.signal);
+  socket.on("answerCall", (data) => { //3) WTD connected and call is answered
+    io.to(data.to).emit("callAccepted", data.signal);
   });
+  socket.on("connect_error", (err) => {
+  console.log(`connect_error due to ${err.message}`);
+});
 });
 
-app.listen(PORT, () => {
-  console.log(" you are connected to port", PORT);
+app.listen(PORT, () => {console.log(" you are connected to port", PORT);
 });
