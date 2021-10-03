@@ -3,7 +3,7 @@ import {io} from "socket.io-client";
 import Peer from "simple-peer";
 
 export const SocketContext = createContext();
-const socket = io('http://localhost:5000')
+const socket = io('http://localhost:5000/socket.io')
 
 export const ContextProvider = ({children})=> { 
 const[callAccepted, setCallAccepted]=useState(false)

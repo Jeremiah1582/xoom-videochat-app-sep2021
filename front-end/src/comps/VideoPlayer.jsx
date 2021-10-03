@@ -39,11 +39,11 @@ function VideoPlayer() {
               {call.name || "Name"}{" "}
             </Typography>
             <video
-              playInline
+              playsInline
               muted
               ref={myVideo}
               autoPlay
-              ClassName={classes.video}
+              className={classes.video}
             />
           </Grid>
         </Paper>
@@ -57,7 +57,7 @@ function VideoPlayer() {
               {call.name || "Name"}{" "}
             </Typography>
             <video
-              playInline
+              playsInline
               muted
               ref={userVideo}
               autoPlay
