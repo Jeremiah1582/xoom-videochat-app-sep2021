@@ -4,7 +4,7 @@ import Peer from "simple-peer";
 
 export const SocketContext = createContext();
 // const socket = io('http://localhost:5000')
-const socket = io('https://git.heroku.com/xoom-videochat-app.git');
+const socket = io('https://xoom-videochat-app.herokuapp.com/');
 
 export const ContextProvider = ({children})=> { 
 const[callAccepted, setCallAccepted]=useState(false)
