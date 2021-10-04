@@ -49,8 +49,8 @@ function VideoPlayer() {
         </Paper>
       )}
 
-      {/*other users Video  */}
-      {callAccepted && !callEnded && (
+      {/* other users Video  */}
+      {callAccepted && !callEnded &&(
         <Paper className={classes.paper}>
           <Grid item xs={12} md={6}>
             <Typography variant="h5" gutterBottom>

@@ -43,11 +43,12 @@ function App() {
       </AppBar>
 
       <VideoPlayer />
-
-      <Options className="options-comp">
+     
+      <Options>
         <Notifications />
       </Options>
     </div>
+
   );
 }
 
