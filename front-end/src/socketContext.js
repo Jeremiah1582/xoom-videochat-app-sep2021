@@ -49,7 +49,7 @@ useEffect(() => {
        });
        peer.signal(call.signal);
        connectionRef.current =peer
-   }
+   };
 
    const callUser =(id)=>{
     const peer = new Peer({initiator: true, trickle: false, stream })

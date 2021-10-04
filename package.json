@@ -23,6 +23,6 @@
   },
   "homepage": "https://github.com/Jeremiah1582/Xoom-#readme",
   "dependencies": {
-    "concurrently": "^6.2.1"
+    "concurrently": "^6.3.0"
   }
 }
