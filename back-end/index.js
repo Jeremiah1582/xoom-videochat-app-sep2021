@@ -5,7 +5,7 @@ const cors = require("cors");
 // testing the connection with this line of code because i cant connect to the back end 
 
 
-const io = require("socket.io")(server,{rejectUnauthorized:false}, {
+const io = require("socket.io")(server,{
   cors: {
     origin: "*",
     methods: [ "GET", "POST"]
