@@ -25,7 +25,7 @@
 //   socket.emit("me", socket.id);
 // console.log(socket);
 
-//   socket.on("disconnect", () => { //1) WTD when connection is established then diconnected
+//   socket.on("disconnect", () => { //1) WTD when connection is established then disconnected
 //     socket.broadcast.emit("callEnded");
 //   });
 
@@ -56,7 +56,7 @@ const io = require("socket.io")(server, {
 
 app.use(cors());
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 5000;
 
 app.get('/', (req, res) => {
 	res.send('Running');
