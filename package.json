@@ -4,7 +4,7 @@
   "description": "Xoom is inspired by the video chat network Zoom",
   "main": "index.js",
   "scripts": {
-    "start": "concurrently \"nodemon back-end/index.js\" \"npm start --prefix front-end\""
+    "start": "concurrently \"npm start --prefix back-end\" \"npm start --prefix front-end\""
     
   },
   "repository": {
