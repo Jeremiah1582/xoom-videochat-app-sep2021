@@ -2,6 +2,9 @@
   "name": "xoom-videochat-app",
   "version": "1.0.0",
   "description": "Xoom is inspired by the video chat network Zoom",
+  "engines": {
+    "node": "14.x"
+  },
   "main": "index.js",
   "scripts": {
     "start": "concurrently \"npm start --prefix back-end\" \"npm start --prefix front-end\""
