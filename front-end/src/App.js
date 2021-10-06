@@ -38,7 +38,7 @@ function App() {
       <AppBar className={classes.appBar} position="static" color="inherit">
         <Typography variant="h2" align="center">
           {" "}
-          Video Chat{" "}
+          Xoom Video Chat App{" "}
         </Typography>
       </AppBar>
 
